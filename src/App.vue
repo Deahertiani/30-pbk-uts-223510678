@@ -4,40 +4,81 @@
     <header>
       <nav>
         <ul>
-          <li @click="showTodos">Todos</li>
-          <li @click="showPosts">Posts</li>
+          
+          <li><router-link to="/">Dea Hertiani</router-link></li>
+          <li><router-link to="/todos">Todos</router-link></li>
+          <li><router-link to="/posts">Posts</router-link></li>
+          <li><router-link to="/albums">Albums</router-link></li>
         </ul>
       </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-      <div v-if="activeMenu === 'todos'">
-        <Todos />
-      </div>
-      <div v-else-if="activeMenu === 'posts'">
-        <Posts />
-      </div>
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Todos from './components/Todos.vue';
-import Posts from './components/Posts.vue';
-
-const activeMenu = ref('todos');
-
-const showTodos = () => {
-  activeMenu.value = 'todos';
-};
-
-const showPosts = () => {
-  activeMenu.value = 'posts';
-};
 </script>
 
 <style scoped>
-/* Your CSS for App component */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* App Container */
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: #e32e52;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #660000;
+}
 </style>
+
